@@ -27,7 +27,7 @@ TIPOS = {
     3: cwiid.EXT_MOTIONPLUS,
     4: cwiid.EXT_NONE,
     5: cwiid.EXT_NUNCHUK,
-    6: cwiid.RPT_UNKNOWN
+    6: cwiid.EXT_UNKNOWN
 }
 
 BOTONES = {
@@ -50,45 +50,49 @@ BOTONES = {
 class Wiiremote():
     
     def __init__(self, address=''):
-        self.wiimote = cwiid.Wiimote(address)
+        try:
+            self.wiimote = cwiid.Wiimote(address)
+        except RuntimeError:
+            print 'no se pudo realizar la conexion'
 
     def get_state(self):
-        return self.wm.state
+        return self.wiimote.state
 
     def get_mode(self):
-        return self.wm.state['rpt_mode']
+        return self.wiimote.state['rpt_mode']
 
     def set_mode(self, mode):
-        self.wm.state['rpt_mode'] = mode
+        self.wiimote.rpt_mode = mode
     
     def get_type(self):
-        return self.wm.state['rpt_mode']
+        return self.wiimote.state['rpt_mode']
 
     def set_type(self, ext_type):
-        self.wm.state['rpt_mode'] = ext_type
+        self.wiimote.ext_type = ext_type
 
     def get_battery(self):
-        return self.wm.state['battery'] * 100 / cwiid.BATTERY_MAX
-wm
+        return self.wiimote.state['battery'] * 100 / cwiid.BATTERY_MAX
+
     def set_led(self, number=1):
-        self.wm.led = number
+        self.wiimote.led = number
 
     def get_led(self):
-        return self.wm.state['led']
+        return self.wiimote.state['led']
         
     def toggle_rumble(self):
-        if self.wm.state['rumble']:
-            self.wm.rumble = 0
+        if self.wiimote.state['rumble']:
+            self.wiimote.rumble = 0
         else:
-            self.wm.rumble = 1
+            self.wiimote.rumble = 1
 
     def get_error(self):
-        return self.wm.state['error']
+        return self.wiimote.state['error']
 
-    def get_ir_pos(self):
-        if self.wm.state['ir_src'] == cwiid.RPT_IR:
-            return self.wm.state['ir_src']['pos']
+    def get_ir_pos(self, source=0):
+        if self.get_mode() == cwiid.RPT_IR:
+            if self.wiimote.state['ir_src'][source]:
+                return self.wiimote.state['ir_src'][source]['pos']
+            else:
+                return None
         else:
-            return (-1, -1)
-
-    
+            return None

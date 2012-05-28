@@ -1,14 +1,18 @@
-import cwiid
+from wii import Wiiremote, MODOS
 import time
 
-wm = cwiid.Wiimote()
 
-wm.rpt_mode = cwiid.RPT_IR
+print 'presione 1 y 2'
+time.sleep(1)
+wm = Wiiremote()
 
-print wm.state['ir_src']
+wm.set_mode(MODOS[6])
+wm.set_led(1)
+
+print wm.get_ir_pos()
 
 while True:
-	if wm.state['ir_src'][0] != None:
-		print " " * ( 97 - wm.state['ir_src'][0]['pos'][0] // 11 ) + "0"
-		time.sleep(.2)
+    if wm.get_ir_pos() != None:
+        print " " * ( 97 - wm.get_ir_pos()[0] // 11 ) + "0"
+        time.sleep(.2)
 print 'fin'

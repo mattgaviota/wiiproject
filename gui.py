@@ -27,7 +27,7 @@ class Main(QtGui.QDialog):
         QtGui.QMessageBox.information(self, u'Conectar', u'Presiona 1 + 2')
         self.wm = Wiiremote()
         self.wm.set_led = 1
-        self.spinbox_led.value = 1
+        self.spinbox_led.setValue = 1
 
 def main():
     app = QtGui.QApplication(sys.argv)

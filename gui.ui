@@ -98,7 +98,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinbox_led"/>
+          <widget class="QSpinBox" name="spinbox_led">
+           <property name="maximum">
+            <number>15</number>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

@@ -9,17 +9,30 @@ import cwiid
 
 # Constantes
 
-MODOS = {
-    0: 'Ninguno',
-    cwiid.RPT_ACC: 'RPT ACC',
-    cwiid.RPT_BALANCE: 'RPT BALANCE',
-    cwiid.RPT_BTN: 'RPT BTN',
-    cwiid.RPT_CLASSIC: 'RPT CLASSIC',
-    cwiid.RPT_EXT: 'RPT EXT',
-    cwiid.RPT_IR: 'RPT IR',
-    cwiid.RPT_MOTIONPLUS: 'RPT MOTIONPLUS',
-    cwiid.RPT_NUNCHUK: 'RPT NUNCHUK',
-    cwiid.RPT_STATUS: 'RPT STATUS'
+MODOS = [
+    'Ninguno',
+    'RPT ACC',
+    'RPT BALANCE',
+    'RPT BTN',
+    'RPT CLASSIC',
+    'RPT EXT',
+    'RPT IR',
+    'RPT MOTIONPLUS',
+    'RPT NUNCHUK',
+    'RPT STATUS'
+]
+
+MODOSVALUES = {
+    'Ninguno': 0,
+    'RPT ACC': cwiid.RPT_ACC,
+    'RPT BALANCE': cwiid.RPT_BALANCE,
+    'RPT BTN': cwiid.RPT_BTN,
+    'RPT CLASSIC': cwiid.RPT_CLASSIC,
+    'RPT EXT': cwiid.RPT_EXT,
+    'RPT IR': cwiid.RPT_IR,
+    'RPT MOTIONPLUS': cwiid.RPT_MOTIONPLUS,
+    'RPT NUNCHUK': cwiid.RPT_NUNCHUK,
+    'RPT STATUS': cwiid.RPT_STATUS
 }
 
 TIPOS = {
@@ -60,10 +73,11 @@ class Wiiremote():
         return self.wiimote.state
 
     def get_mode(self):
-        return MODOS[self.wiimote.state['rpt_mode']]
+        vmodes = dict((v, k) for k, v in MODOSVALUES.iteritems())
+        return vmodes[self.wiimote.state['rpt_mode']]
 
-    def set_mode(self, mode):
-        self.wiimote.rpt_mode = mode
+    def set_mode(self, mode='Ninguno'):
+        self.wiimote.rpt_mode = MODOSVALUES[mode]
     
     def get_type(self):
         return self.wiimote.state['rpt_mode']
@@ -97,3 +111,6 @@ class Wiiremote():
                 return None
         else:
             return None
+
+    def cerrar_conexion(self):
+        self.wiimote.close()

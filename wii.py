@@ -10,7 +10,7 @@ import cwiid
 # Constantes
 
 MODOS = {
-    0: 'None',
+    0: 'Ninguno',
     cwiid.RPT_ACC: 'RPT ACC',
     cwiid.RPT_BALANCE: 'RPT BALANCE',
     cwiid.RPT_BTN: 'RPT BTN',

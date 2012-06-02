@@ -32,7 +32,7 @@ class Main(QtGui.QDialog):
     def set_initial_state(self):
         self.wm.set_led = 1
         self.spinbox_led.setValue = 1
-        self.lbl_bateria.setText(self.wm.get_battery())
+        self.lcd_bateria.setText(self.wm.get_battery())
 
 def main():
     app = QtGui.QApplication(sys.argv)

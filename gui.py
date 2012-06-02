@@ -26,8 +26,13 @@ class Main(QtGui.QDialog):
     def on_btn_conectar_clicked(self):
         QtGui.QMessageBox.information(self, u'Conectar', u'Presiona 1 + 2')
         self.wm = Wiiremote()
+        self.set_initial_state()
+        self.btn_conectar.setDisabled()
+
+    def set_initial_state(self):
         self.wm.set_led = 1
         self.spinbox_led.setValue = 1
+        self.lbl_bateria.setText(self.wm.get_battery())
 
 def main():
     app = QtGui.QApplication(sys.argv)

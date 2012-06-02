@@ -10,15 +10,16 @@ import cwiid
 # Constantes
 
 MODOS = {
-    1: cwiid.RPT_ACC,
-    2: cwiid.RPT_BALANCE,
-    3: cwiid.RPT_BTN,
-    4: cwiid.RPT_CLASSIC,
-    5: cwiid.RPT_EXT,
-    6: cwiid.RPT_IR,
-    7: cwiid.RPT_MOTIONPLUS,
-    8: cwiid.RPT_NUNCHUK,
-    9: cwiid.RPT_STATUS
+    0: 'Ninguno',
+    cwiid.RPT_ACC: 'RPT ACC',
+    cwiid.RPT_BALANCE: 'RPT BALANCE',
+    cwiid.RPT_BTN: 'RPT BTN',
+    cwiid.RPT_CLASSIC: 'RPT CLASSIC',
+    cwiid.RPT_EXT: 'RPT EXT',
+    cwiid.RPT_IR: 'RPT IR',
+    cwiid.RPT_MOTIONPLUS: 'RPT MOTIONPLUS',
+    cwiid.RPT_NUNCHUK: 'RPT NUNCHUK',
+    cwiid.RPT_STATUS: 'RPT STATUS'
 }
 
 TIPOS = {
@@ -31,17 +32,17 @@ TIPOS = {
 }
 
 BOTONES = {
-    1:  cwiid.BTN_1,
-    2:  cwiid.BTN_2,
-    3:  cwiid.BTN_A,
-    4:  cwiid.BTN_B,
-    5:  cwiid.BTN_DOWN,
-    6:  cwiid.BTN_HOME,
-    7:  cwiid.BTN_LEFT,
-    8:  cwiid.BTN_MINUS,
-    9:  cwiid.BTN_PLUS,
-    10: cwiid.BTN_RIGHT,
-    11: cwiid.BTN_UP
+    cwiid.BTN_1: '1',
+    cwiid.BTN_2: '2',
+    cwiid.BTN_A: 'A',
+    cwiid.BTN_B: 'B',
+    cwiid.BTN_DOWN: 'Abajo',
+    cwiid.BTN_HOME: 'Home',
+    cwiid.BTN_LEFT: 'Izquierda',
+    cwiid.BTN_MINUS: 'Menos',
+    cwiid.BTN_PLUS: 'Mas',
+    cwiid.BTN_RIGHT: 'Derecha',
+    cwiid.BTN_UP: 'Arriba'
 }
 
 
@@ -59,7 +60,7 @@ class Wiiremote():
         return self.wiimote.state
 
     def get_mode(self):
-        return self.wiimote.state['rpt_mode']
+        return MODOS[self.wiimote.state['rpt_mode']]
 
     def set_mode(self, mode):
         self.wiimote.rpt_mode = mode

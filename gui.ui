@@ -156,9 +156,9 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="lbl_rpt_mode">
-           <property name="text">
-            <string>None</string>
+          <widget class="QComboBox" name="cb_rpt_mode">
+           <property name="editable">
+            <bool>false</bool>
            </property>
           </widget>
          </item>

@@ -47,7 +47,7 @@
           <bool>false</bool>
          </property>
          <property name="text">
-          <string>Habilitar</string>
+          <string>Deshabilitar</string>
          </property>
         </widget>
        </item>
@@ -178,22 +178,17 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QLabel" name="label_5">
-           <property name="text">
-            <string>Botón</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="lbl_boton">
-           <property name="text">
-            <string>None</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <layout class="QHBoxLayout" name="horizontalLayout_4"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_rumble">
+         <property name="text">
+          <string>Rumble</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -202,22 +197,5 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>btn_cerrar</sender>
-   <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>39</x>
-     <y>118</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>62</x>
-     <y>109</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
